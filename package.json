@@ -1,0 +1,32 @@
+{
+  "name": "smaller-web",
+  "version": "1.0.0",
+  "description": "compress image",
+  "main": "dist/Smaller.js",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-es2015-modules-umd": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src/Smaller.js -o dist/Smaller.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leevscript/smaller.git"
+  },
+  "keywords": [
+    "smaller",
+    "cpmpress",
+    "图片压缩"
+  ],
+  "author": "leevscript",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leevscript/smaller/issues"
+  },
+  "homepage": "https://github.com/leevscript/smaller#readme"
+}

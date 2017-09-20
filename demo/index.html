@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="../dist/Smaller.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 300px;
+      margin: 100px auto;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <img src="./default.png" height="200">
+  <input type="file">
+  <p>压缩前图片大小: <span class="before"></span></p>
+  <p>压缩后图片大小: <span class="after"></span></p>
+</div>
+</body>
+<script>
+  document.querySelector('input[type=file]').addEventListener('change', function () {
+    var file = this.files[0]
+    document.querySelector('.before').innerHTML = file.size
+    new Smaller({
+      file: file,
+      scale: 0.4,
+      success: function (data) {
+        console.log(data)
+        var file = data.file
+        var url = data.url
+        var xmlhttp = new XMLHttpRequest()
+        console.log(file)
+        document.querySelector('img').src = url
+        document.querySelector('.after').innerHTML = file.size
+        var formData = new FormData()
+        formData.append('img', file)
+        xmlhttp.open("POST", '/upload', true)
+        xmlhttp.send(formData)
+        xmlhttp.onreadystatechange = function () {
+          if (this.readyState == 4 && this.status == 200) {
+            console.log(JSON.parse(this.responseText))
+          }
+        }
+      }
+    })
+
+  })
+</script>
+</html>
